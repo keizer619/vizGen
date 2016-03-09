@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript" src="js/dataTables.min.js"></script>
+
+		<script type="text/javascript" src="js/d3.min.js"></script>
+		<script type="text/javascript" src="js/vega.js"></script>
+		<script type="text/javascript" src="js/VizGrammar.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/dataTables.min.css">
+	</head>
+	<body>
+		<div id="testData"></div>
+		<div id="vizChart"></div>
+		<script type="text/javascript">
+
+
+			        var data =  [
+			            {
+			              "metadata" : {
+			                  "names" : ["rpm","torque","horsepower", "EngineType"],
+			                  "types" : ["ordinal","linear", "ordinal","ordinal"]
+			                },
+			              "data": [
+			              		[1,12,231,"Piston"],[2,12,231,"Rotary"],[3,12,231,"Piston"],[4,12,231,"Rotary"],
+			              		[5,12,231,"Piston"],[6,12,231,"Piston"],[7,12,231,"Piston"],[8,12,231,"Piston"],
+			                            ]
+			            }
+			          ];
+
+
+			       
+			          var config = {
+			            key : "rpm",
+			            charts : [{ type: "table", 
+			                        y : "torque", 
+			                        columns:["EngineType",  "torque", "rpm"],  
+			                        columnTitles:["Engine Type",  "Engine Torque", "Engine RPM"], 
+			                        maxLength: 7}
+			                      ],
+			            width: 400,
+			            height: 200
+			          };
+
+			          var table = new vizg(data, config);
+          			  table.draw("#vizChart");
+		</script>
+
+	</body>
+</html>
